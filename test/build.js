@@ -28,6 +28,18 @@ test('build', function() {
     assert.equal(num(123), '123');
     assert.equal(num(-234), '-234');
 
+    var fell
+
+    try {
+        num(0.00000001);
+        fell = true;
+    } catch (e) {
+    }
+
+    if (fell) {
+        assert.equal(num(0.00000001), '0.00000001');
+    }
+
     // large numbers
     assert.equal(num('987654321987654321'), '987654321987654321');
     assert.equal(num('-987654321987654321.12345678901'), '-987654321987654321.12345678901');
@@ -40,4 +52,3 @@ test('build#precision', function() {
     assert.equal(num(1234567890, 5), '12345.67890');
     assert.equal(num(-122, 4), '-0.0122');
 });
-

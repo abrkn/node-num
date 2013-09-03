@@ -15,6 +15,14 @@ function Num(num, prec) {
     // convert to a string
     num = '' + num;
 
+    if (!num.length) {
+        throw new Error('Number is empty');
+    }
+
+    if (!num.match(/^-?([0-9]*\.)?[0-9]*$/)) {
+        throw new Error('Failed to parse number "' + num + '"');
+    }
+
     // find Num point
     var dec = num.indexOf('.');
     var precision;
