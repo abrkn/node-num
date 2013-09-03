@@ -27,6 +27,7 @@ test('build', function() {
     assert.equal(num('0.001234'), '0.001234');
     assert.equal(num(123), '123');
     assert.equal(num(-234), '-234');
+    assert.equal(num('0.100'), '0.100');
 
     var fell
 

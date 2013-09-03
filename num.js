@@ -12,15 +12,18 @@ function Num(num, prec) {
         return self;
     }
 
-    // convert to a string
-    num = '' + num;
-
-    if (!num.length) {
-        throw new Error('Number is empty');
+    if (typeof num == 'number') {
+        num = num.toString();
     }
 
-    if (!num.match(/^-?([0-9]*\.)?[0-9]*$/)) {
-        throw new Error('Failed to parse number "' + num + '"');
+    if (typeof num == 'string') {
+        if (!num.match(/^-?([0-9]*\.)?[0-9]*$/)) {
+            throw new Error('Failed to parse number "' + num + '"');
+        }
+    }
+
+    if (num instanceof Int) {
+        num = num.toString();
     }
 
     // find Num point
