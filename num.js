@@ -13,6 +13,10 @@ function Num(num, prec) {
     }
 
     // convert to a string
+    if (num === undefined || num === null) {
+        num = ''
+    }
+
     num = '' + num;
 
     if (!num.match(/^-?([0-9]*\.)?[0-9]*$/)) {
