@@ -12,18 +12,11 @@ function Num(num, prec) {
         return self;
     }
 
-    if (typeof num == 'number') {
-        num = num.toString();
-    }
+    // convert to a string
+    num = '' + num;
 
-    if (typeof num == 'string') {
-        if (!num.match(/^-?([0-9]*\.)?[0-9]*$/)) {
-            throw new Error('Failed to parse number "' + num + '"');
-        }
-    }
-
-    if (num instanceof Int) {
-        num = num.toString();
+    if (!num.match(/^-?([0-9]*\.)?[0-9]*$/)) {
+        throw new Error('Failed to parse number "' + num + '"');
     }
 
     // find Num point
