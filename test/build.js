@@ -1,6 +1,7 @@
-
+var expect = require('expect.js');
 var assert = require('assert');
 var num = require('../');
+
 
 test('build', function() {
 
@@ -29,17 +30,31 @@ test('build', function() {
     assert.equal(num(-234), '-234');
     assert.equal(num('0.100'), '0.100');
 
-    var fell
+    // undefined/null/strange
+    expect(function() {
+        num(undefined)
+    }).to.throwError()
 
-    try {
-        num(0.00000001);
-        fell = true;
-    } catch (e) {
-    }
+    expect(function() {
+        num(null)
+    }).to.throwError()
 
-    if (fell) {
-        assert.equal(num(0.00000001), '0.00000001');
-    }
+    // true/false are not isNaN
+    expect(function() {
+        num(false)
+    }).to.throwError()
+
+    expect(function() {
+        num('')
+    }).to.throwError()
+
+    expect(function() {
+        num('    ')
+    }).to.throwError()
+
+    expect(function() {
+        num('.')
+    }).to.throwError()
 
     // large numbers
     assert.equal(num('987654321987654321'), '987654321987654321');

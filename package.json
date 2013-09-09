@@ -18,7 +18,8 @@
     "int": "0.1.1"
   },
   "devDependencies": {
-    "mocha": ">=1.x.x"
+    "mocha": "~1.12.1",
+    "expect.js": "~0.2.0"
   },
   "optionalDependencies": {},
   "engines": {

@@ -12,14 +12,17 @@ function Num(num, prec) {
         return self;
     }
 
-    // convert to a string
-    if (num === undefined || num === null) {
-        num = ''
+    num = num.toString();
+
+    if (num.length === 0) {
+        throw new Error('length of num as a string is zero');
     }
 
-    num = '' + num;
+    if (num == '.') {
+        throw new Error('a single dot is not a valid number');
+    }
 
-    if (!num.match(/^-?([0-9]*\.)?[0-9]*$/)) {
+    if (!num.match(/^-?[0-9]*\.?[0-9]*$/)) {
         throw new Error('Failed to parse number "' + num + '"');
     }
 
