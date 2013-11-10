@@ -56,6 +56,12 @@ test('build', function() {
         num('.')
     }).to.throwError()
 
+    // insert precision point
+    assert.equal(num('1234', 3), '1.234');
+
+    // insert precision point
+    assert.equal(num('1234', 0), '1234');
+
     // large numbers
     assert.equal(num('987654321987654321'), '987654321987654321');
     assert.equal(num('-987654321987654321.12345678901'), '-987654321987654321.12345678901');
