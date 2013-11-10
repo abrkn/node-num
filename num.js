@@ -30,6 +30,10 @@ function Num(num, prec) {
     var dec = num.indexOf('.');
     var precision;
 
+    if (typeof prec == 'number' && ~num.indexOf('.')) {
+        throw new Error('Combining decmial point in number and specifying precision')
+    }
+
     if (dec >= 0) {
         // take out the Num point
         num = num.replace('.', '');
