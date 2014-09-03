@@ -22,6 +22,11 @@ function Num(num, prec) {
         throw new Error('a single dot is not a valid number');
     }
 
+    var simpleExp = num.match(/^([0-9]+)e-([0-9]+)$/);
+    if (simpleExp) {
+    	num = Num(simpleExp[1], +simpleExp[2]).toString()
+    }
+
     if (!num.match(/^-?[0-9]*\.?[0-9]*$/)) {
         throw new Error('Failed to parse number "' + num + '"');
     }
